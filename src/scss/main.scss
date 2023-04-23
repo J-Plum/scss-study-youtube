@@ -1,0 +1,56 @@
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import "./layout/navBar/leftNav";
+@import "./layout/navBar/rightNav";
+@import "./layout/navBar/searchBar";
+@import "./layout/navBar/navBar";
+
+@import "./layout/sideBar/sideBar";
+@import "./layout/sideBar/bigSideBar";
+@import "./layout/sideBar/smallSideBar";
+
+@import "./pages/mainPage";
+@import "./pages/searchedVideosPage";
+@import "./pages/videPage";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $bg-color;
+  font-family: "Roboto" sans-serif;
+
+  #root {
+    display: grid;
+    
+    //grid column을 설정하는 속성  첫 번째 열 auto , 두 번째 열은 첫 번째 열의 너비의 1.4배로 설정.
+    grid-template-columns: auto 1.4fr;
+    
+    //grid row를 설정하는 속성 첫 번째 행 55px, 두 번째 행 컨탠츠에 따라 자동으로 높이가 설정.
+    grid-template-rows: 55px auto;
+    
+    // 그리드의 영역을 설정하는 속성
+    // 첫 번째 행은 네비게이션 바가 들어갈 영역이 2개
+    // 두 번째 행은 사이드바와 메인 컨텐츠가 들어갈 영역으로 설정.
+    grid-template-areas:
+      "nav nav"
+      "aside main";
+
+    main{
+      width: 100%;
+
+      // main 태그를 그리드의 "main" 영역에 배치.
+      grid-area: main;
+    }
+  }
+}
