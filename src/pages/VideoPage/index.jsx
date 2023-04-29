@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function VideoPage() {
+export default function index() {
   return <div>VideoPage</div>;
 }

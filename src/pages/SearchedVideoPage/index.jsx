@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SearchedVideoPage() {
+export default function index() {
   return <div>SearchedVideoPage</div>;
 }
 
