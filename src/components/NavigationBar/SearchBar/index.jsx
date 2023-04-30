@@ -1,19 +1,30 @@
 import React from "react";
 import { ImSearch } from "react-icons/im";
 import { MdKeyboardVoice } from "react-icons/md";
+import { useSearch } from "../../../context/SearchContext";
+import useWindowSize from "../../../helpers/useWindowSize";
 
 export default function index() {
+  const { width } = useWindowSize();
+  const { setShowSpecialSearchBar } = useSearch();
+
   return (
-    <div className="SearchBar">
-      <form>
-        <input type="text" name="search" placeholder="Search" />
-        <button type="submit">
-          <ImSearch size={20}/>
+    <div className={`SearchBar  ${width <= 640 ? "smallSearch" : ""}`}>
+      {width > 640 ? (
+        <form>
+          <input type="text" name="search" placeholder="Search" autoComplete="false" />
+          <button type="submit">
+            <ImSearch size={20} data-tip="Search" data-for="navbar" />
+          </button>
+        </form>
+      ) : (
+        <button className="icon-container searchIcon" onClick={() => setShowSpecialSearchBar(true)}>
+          <ImSearch size={20} data-tip="Search" data-for="navbar" />
         </button>
-      </form>
+      )}
 
       <button className="icon-container voiceIcon">
-        <MdKeyboardVoice size={25}/>
+        <MdKeyboardVoice size={25} data-tip="Search with your voice" data-for="navbar" />
       </button>
     </div>
   );
