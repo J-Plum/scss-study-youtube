@@ -1,6 +1,6 @@
 @use "./abstracts" as *;
-@use "./layout" as *;
-@use "./pages" as *;
+@use "./layout";
+@use "./pages";
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
