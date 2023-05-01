@@ -9,7 +9,24 @@ export default function index() {
   const { isToggled, setIsToggled } = useSideBar();
 
   useEffect(() => {
-    width <= 1300 ? setIsToggled(false) : setIsToggled(true);
-  }, [width]);
-  return <>{width < 792 ? null : isToggled ? <BigSideBar /> : <SmallsideBar />}</>;
+    width <= 1320
+      ? setIsToggled(false)
+      : location.pathname.startsWith('/video')
+      ? setIsToggled(false)
+      : setIsToggled(true);
+  }, [width, location.pathname, setIsToggled]);
+
+  return (
+    <>
+      {location.pathname.startsWith("/video/") ? (
+        isToggled ? (
+          <BigSideBar />
+        ) : null
+      ) : width < 792 ? null : isToggled ? (
+        <BigSideBar />
+      ) : (
+        <SmallsideBar />
+      )}
+    </>
+  );
 }

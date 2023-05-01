@@ -1,15 +1,19 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types */   
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import dayjs from "dayjs";
-import relativeTime from 'dayjs/plugin/relativeTime'
+import relativeTime from "dayjs/plugin/relativeTime";
 import { formatViews } from "../../helpers/formatView";
+import formatTimeVideo from "../../helpers/formatTimeVideo";
 
 export default function VideoCard({ id, video, img, info, eInfo, channelInfo }) {
+  console.log(dayjs(info.publishedAt));
   dayjs.extend(relativeTime);
   const views = formatViews(eInfo.viewCount);
   const time = dayjs(info.publishedAt).fromNow(true);
+  const duration = formatTimeVideo(eInfo.duration);
+
   return (
     <div className="videoCard">
       <Link to={`/video/${id}`} state={{ ...video }}>
@@ -17,7 +21,7 @@ export default function VideoCard({ id, video, img, info, eInfo, channelInfo }) 
           <img src={img} alt={info.title} />
           {eInfo.duration ? (
             <div className="video_duration">
-              <span>{eInfo.duration}</span>
+              <span>{duration}</span>
             </div>
           ) : null}
         </div>

@@ -1,11 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "../../api/axios";
 import VideoCard from "../../components/VideoCard/VideoCard";
+import { useSideBar } from "../../context/SideBarContext";
 import { getVideoInfo } from "../../helpers/fetchingData";
 
 export default function MainPage() {
   const storedVideos = JSON.parse(localStorage.getItem("mainVideos"));
   const [mainVideos, setMainVideos] = useState(storedVideos || []);
+
+  const { setIsToggled } = useSideBar();
+
+  useEffect(() => {
+    setIsToggled(true);
+  })
 
   const getMainVideos = useCallback(async () => {
     try {
