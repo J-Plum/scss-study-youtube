@@ -4,7 +4,7 @@ import { MdApps as Apps } from "react-icons/md";
 import { MdNotifications as Notification } from "react-icons/md";
 import ReactTooltip from "react-tooltip";
 
-const RightNav = () => {
+export default function RightNav() {
   return (
     <div className="buttons">
       <button className="icon-container">
@@ -28,6 +28,4 @@ const RightNav = () => {
       />
     </div>
   );
-};
-
-export default RightNav;
+}

@@ -9,11 +9,7 @@ export default function MainPage() {
   const [mainVideos, setMainVideos] = useState(storedVideos || []);
 
   const { setIsToggled } = useSideBar();
-
-  useEffect(() => {
-    setIsToggled(true);
-  })
-
+  
   const getMainVideos = useCallback(async () => {
     try {
       if (!storedVideos) {
@@ -30,6 +26,7 @@ export default function MainPage() {
   }, []);
 
   useEffect(() => {
+    setIsToggled(true);
     getMainVideos();
   }, []);
 

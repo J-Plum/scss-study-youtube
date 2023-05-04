@@ -3,7 +3,6 @@ import axios from "../api/axios";
 export const getVideoInfo = async (videoArray) => {
   try {
     for (let video of videoArray) {
-      console.log(video.id.videoId);
       const videoResponse = await axios.get(
         `/videos?part=snippet&part=contentDetails&part=player&part=statistics&id=${video.id.videoId}`
       );

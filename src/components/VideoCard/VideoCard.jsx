@@ -8,7 +8,6 @@ import { formatViews } from "../../helpers/formatView";
 import formatTimeVideo from "../../helpers/formatTimeVideo";
 
 export default function VideoCard({ id, video, img, info, eInfo, channelInfo }) {
-  console.log(dayjs(info.publishedAt));
   dayjs.extend(relativeTime);
   const views = formatViews(eInfo.viewCount);
   const time = dayjs(info.publishedAt).fromNow(true);
